@@ -1,0 +1,93 @@
+def ret_protocol(a):
+    if str(a) == "tcp":
+        return 1
+    elif str(a) == "udp":
+        return 2
+    elif str(a) == "icmp":
+        return 3
+data['protocol_type'] = data['protocol_type'].apply(ret_protocol)
+
+def ret_flag(a):
+    if str(a) == "SF":
+        return 1
+    elif str(a) == "S0":
+        return 2
+    elif str(a) == "S1":
+        return 3
+    elif str(a) == "S2":
+        return 4
+    elif str(a) == "S3":
+        return 5
+    elif str(a) == "REJ":
+        return 6
+    elif str(a) == "RSTO":
+        return 7
+    elif str(a) == "RSTR":
+        return 8
+    elif str(a) == "RSTOS0":
+        return 9
+    elif str(a) == "OTH":
+        return 10
+    elif str(a) == "SH":
+        return 11
+data['flag'] = data['flag'].apply(ret_flag)
+
+def ret_labels(a):
+  if str(a)== 'normal.':
+    return 1
+  elif str(a) == "buffer_overflow.":
+    return 2
+  elif str(a) == "loadmodule.":
+    return 3
+  elif str(a) == "perl.":
+    return 4
+  elif str(a) == "neptune.":
+    return 5
+  elif str(a) == "smurf.":
+    return 6
+  elif str(a) == "guess_passwd.":
+    return 7
+  elif str(a) == "pod.":
+    return 8
+  elif str(a) == "teardrop.":
+    return 9
+  elif str(a) == "portsweep.":
+    return 10
+  elif str(a) == "ipsweep.":
+    return 11
+  elif str(a) == "land.":
+    return 12
+  elif str(a) == "ftp_write.":
+    return 13
+  elif str(a) == "back.":
+    return 14
+  elif str(a) == "imap.":
+    return 15
+  elif str(a) == "satan.":
+    return 16
+  elif str(a) == "phf.":
+    return 17
+  elif str(a) == "nmap.":
+    return 18
+  elif str(a) == "multihop.":
+    return 19
+  elif str(a) == "warezmaster.":
+    return 20
+  elif str(a) == "warezclient.":
+    return 21
+  elif str(a) == "spy.":
+    return 22
+  elif str(a) == "rootkit.":
+    return 23
+data['labels'] = data['labels'].apply(ret_labels)
+
+
+
+duration protocol_type	src_bytes	dst_bytes	is_host_login	is_guest_login	diff_srv_rate	srv_diff_host_rate	flag	labels
+0	  tcp		181		5450		0		0		0.0		0.0			SF	normal.
+0	  tcp		239		486		0		0		0.0		0.0			SF	normal.
+0	  tcp		235		1337		0		0		0.0		0.0			SF	normal.
+0	  tcp		219		1337		0		0		0.0		0.0			SF	normal.
+0	  tcp		217		2032		0		0		0.0		0.0			SF	normal.
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+<! ######################################################################################### >
+
+<body>
+<! --------------------------------------- Main Title -------------------------------------- >
+<div class="container"><center><h1>Intrusion Detection Result</h1><br></center></div>
+
+<div class="container" style="border: 2px black;">
+    <table align="centre">
+            <center><h3></h3></center>
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; border: 2px black;"> 
+                <h3>Logistic regression predicted : </h3>    
+                <h3>{{logic}}</h3>
+            </div>
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center"> 
+                <h3>Knn predicted : </h3>    
+                <h3>{{knn}}</h3>
+            </div>
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center"> 
+                <h3>SVM predicted : </h3>    
+                <h3>{{svm}}</h3>
+            </div>
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center"> 
+                <h3>Hybrid Model predicted : </h3>    
+                <h3>{{random}} .</h3><h3> </h3>
+                <h3> Its a type of {{type}}</h3>
+            </div>
+        <h1 class="hone"><a href="/"> 🏠 </a> </h1>
+    </table>
+    <div style="height: 800px; margin-top: 300px;">
+    
+</div>
+
+</div>
+</body>
+<br>
+</html>

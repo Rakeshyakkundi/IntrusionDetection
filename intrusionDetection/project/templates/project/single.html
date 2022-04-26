@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+<meta charset="UTF-8">
+<title>Intrusion Detection</title>
+<link rel="stylesheet" href="../static/css/style.css">
+<style>
+	.select-wrapper{
+		float: left;
+		display: inline-block;
+		border: 2px solid #0e0101;        
+		background: url("/examples/images/dropdown.png") no-repeat right center;
+		cursor: pointer;
+	}
+	.select-wrapper, .select-wrapper select{
+		width: 200px;
+		height: 26px;
+		line-height: 26px;
+	}
+	.select-wrapper:hover{
+		background: url("/examples/images/dropdown-hover.png") no-repeat right center;
+		border-color: #103531;
+	}
+	.select-wrapper .holder{
+		display: block;
+		margin: 0 35px 0 5px;
+		white-space: nowrap;            
+		overflow: hidden;
+		cursor: pointer;
+		position: relative;
+		z-index: -1;
+	}
+	.select-wrapper select{
+		margin: 0;
+		position: absolute;
+		z-index: 2;            
+		cursor: pointer;
+		outline: none;
+		opacity: 0;
+	}
+    
+    /* Let's Beautify Our Form */
+	form{
+        margin: 20px;
+    }
+    input[type="submit"]{
+        float: left;
+        background: #d8d8d8;
+        border: 1px solid #c4c4c4;
+        margin-left: 10px;
+        padding: 4px 10px;
+        cursor: pointer;
+        outline: none;
+    }
+    input[type="submit"]:hover{
+        color: #fff;
+        border-color: #c3dad6;
+        background-color: #f0f6f7;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".custom-select").each(function(){
+            $(this).wrap("<span class='select-wrapper'></span>");
+            $(this).after("<span class='holder'></span>");
+        });
+        $(".custom-select").change(function(){
+            var selectedOption = $(this).find(":selected").text();
+            $(this).next(".holder").text(selectedOption);
+        }).trigger('change');
+    })
+</script>
+</head>
+
+<body>
+<! Back Button --------------------------------------- >
+<button type="button" class="round-button"><a style="text-decoration:none"; href="/" ><</a></a></button>
+<script> function goBack() { window.history.back();} </script>
+
+<! Title Name  --------------------------------------- >
+<div class="container"><center><h1> Student Churn Analysis </h1></center></div>
+
+<! Asking user to enter student details  --------------------------------------- >
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token  %}  
+        <center>
+            <! Table_02 Starts  --------------------------------------- >
+            <table>
+                <! 1st row ----------- >
+                <tr>
+                    <td align="right">Duration</td>
+                    <td><input type="number" required="required" name="Duration"         id="Duration"></td>
+                </tr>
+                <! 2nd row ----------- >
+                <tr>
+                    <td align="right">Protocol type</td>
+                    <td>
+                        <!-- <div class="custom-select" style="width:200px;"> -->
+                        <select name="protocol_type" id="protocol_type"  class="custom-select">
+                            <option value="tcp">TCP</option>
+                            <option value="udp">UDP</option>
+                            <option value="icmp">ICMP</option>
+                          </select>
+                        </div>
+                        <tr></tr><tr></tr><tr></tr>
+                    </td>
+                </tr>
+                <! 3rd row ----------- >
+                <tr>
+                    <td align="right">Source bytes</td>
+                    <td><input type="number" required="required" name="src_bytes"       id="src_bytes"     ></td>
+                </tr>
+                <! 4th row ----------- >
+                <tr>
+                    <td align="right">Destination bytes</td>
+                    <td><input type="number" required="required" name="destination"      id="destination"   ></td>
+                </tr>
+                <! 5th row ----------- >
+                <tr>
+                    <td align="right">Is Host Login</td>
+                    <td><input type="number" required="required" name="is_host_login"        id="is_host_login"       placeholder="Ex : 0 , 1"></td>
+                </tr>
+                <! 6th row ----------- >
+                <tr>
+                    <td align="right">Is Guest Login</td>
+                    <td><input type="number" required="required" name="is_guest_login"        id="is_guest_login"        placeholder="Ex : 0 , 1"></td>
+                </tr>
+                <! 7th row ----------- >
+                <tr>
+                    <td align="right">Diff Srv Rate</td>
+                    <td><input type="number" required="required" step="0.01" name="diff_srv_rate"           id="diff_srv_rate"        ></td>
+                </tr>
+                <! 8th row ----------- >
+                <tr>
+                    <td align="right">Srv Diff Host Rate	</td>
+                    <td><input type="number" required="required" name="srv_diff_host_rate"           id="srv_diff_host_rate	"        ></td>
+                </tr>
+                <! 9nd row ----------- >
+                <tr>
+                    <td align="right">Flag</td>
+                    <td>
+                        <!-- <div class="custom-select" style="width:200px;"> -->
+                        <select name="flag" id="flag" class="custom-select">
+                            <option value="SF">SF</option>
+                            <option value="S1">S1</option>
+                            <option value="REJ">REJ</option>
+                            <option value="S2">S2</option>
+                            <option value="S0">S0</option>
+                            <option value="S3">S3</option>
+                            <option value="RSTO">RSTO</option>
+                            <option value="RSTR">RSTR</option>
+                            <option value="RSTOS0">RSTOS0</option>
+                            <option value="OTH">OTH</option>
+                            <option value="SH">SH</option>
+                          </select>
+                        </div>
+                        <tr></tr><tr></tr><tr></tr>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <! Button  --------------------------------------- >
+            <button type="submit" class="btn">Predict</button>
+        </center>
+    </form>
+</div>
+
+</body>
+</html>
